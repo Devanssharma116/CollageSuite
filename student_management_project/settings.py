@@ -27,7 +27,7 @@ AUTH_USER_MODEL = 'student_management_app.CustomUser'
 SECRET_KEY = 'django-insecure-t4s#&uwtrhsf7%%27vme+8zpzp@(hzj_vw8+dptr8dis%gd52v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 MEDIA_URL="/media/"
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
