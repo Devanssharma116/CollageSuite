@@ -1,0 +1,824 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | LJKU</title>
+    <!-- <link rel="icon" href="Images/favicon.png"> -->
+    <link rel="icon" href="../static/dist/img/favicon-32x32.png">
+
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+        <style> 
+            img { 
+            background-size: cover; 
+            } 
+            body {background-color: rgb(238, 235, 234);} 
+            
+            
+            /* */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Poppins', sans-serif;
+            }
+            
+            header {
+                min-height: 100vh;
+                width: 100%;
+                background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.8)), url("../static/dist/img/background.webp");
+                background-size: cover;
+                background-position: center;
+                position: relative;
+            }
+            
+            nav {
+                display: flex;
+                padding: 2% 6%;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            nav img {
+                width: 80px;
+            }
+            
+            nav h1 {
+                color: #e5e5e5;
+                margin-left: 40px;
+                font-size: 30px;
+            }
+            
+            .nav-links {
+                flex: 1;
+                text-align: right;
+            }
+            
+            .nav-links ul li {
+                list-style: none;
+                display: inline-block;
+                padding: 8px 12px;
+                position: relative;
+            }
+            
+            .nav-links ul li a {
+                color: #e5e5e5;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 600;
+            }
+            
+            .nav-links ul li::after {
+                content: '';
+                width: 0%;
+                height: 2px;
+                background: #e5e5e5;
+                display: block;
+                margin: auto;
+                transition: 500ms;
+            }
+            
+            .nav-links ul li:hover::after {
+                width: 100%;
+            }
+            
+            .nav-links ul li audio {
+                height: 30px;
+                width: 80px;
+            }
+            
+            .nav-links ul li:last-of-type::after {
+                display: none;
+            }
+            
+            .text-box {
+                width: 80%;
+                color: #e5e5e5;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+            
+            .text-box h1 {
+                font-size: 61px;
+            }
+            
+            .text-box p {
+                margin: 10px 0 40px;
+                font-size: 14px;
+                color: #fff;
+            }
+            
+            .hero-btn {
+                display: inline-block;
+                text-decoration: none;
+                color: #e5e5e5;
+                border: 1px solid #e5e5e5;
+                border-radius: 5px;
+                padding: 12px 34px;
+                font-size: 13px;
+                background: transparent;
+                position: relative;
+                cursor: pointer;
+            }
+            
+            .hero-btn:hover {
+                border: 1px solid #003262;
+                background: #003262;
+                transition: 500ms;
+                transform: scale(1.1);
+            }
+            
+            nav .fa {
+                display: none;
+            }
+            
+            @media (max-width: 700px) {
+            
+                nav a img {
+                    width: 60px;
+                }
+            
+                nav h1 {
+                    font-size: 18px;
+                    text-align: center;
+                    margin: 10px;
+                }
+            
+                .text-box h1 {
+                    font-size: 20px;
+                }
+            
+                .nav-links ul li {
+                    display: block;
+                }
+            
+                .nav-links {
+                    position: fixed;
+                    background: #18181a;
+                    height: 100vh;
+                    width: 200px;
+                    top: 0;
+                    right: -200px;
+                    text-align: left;
+                    z-index: 2;
+                    transition: 500ms;
+                }
+            
+                nav .fa {
+                    display: block;
+                    color: #e5e5e5;
+                    margin: 10px;
+                    font-size: 22px;
+                    cursor: pointer;
+                }
+            
+                .nav-links ul {
+                    padding: 30px;
+                }
+            
+                .nav-links ul li::after {
+                    display: none;
+                }
+            
+                .nav-links ul li audio {
+                    width: 80px;
+                }
+            
+            }
+            
+            /* -------- Course -------- */
+            
+            .course {
+                width: 80%;
+                margin: auto;
+                margin-bottom: 100px;
+                text-align: center;
+                padding-top: 100px;
+            }
+            
+            h1 {
+                font-size: 36px;
+                font-weight: 600;
+            }
+            
+            p {
+                color: #666;
+                font-size: 14px;
+                line-height: 22px;
+                padding: 10px;
+            }
+            
+            .row {
+                margin-top: 5%;
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .course-col {
+                flex-basis: 31%;
+                background: #fff3f3;
+                border-radius: 10px;
+                margin-bottom: 5%;
+                padding: 20px 12px;
+                text-align: left;
+                transition: 500ms;
+            }
+            
+            h3 {
+                text-align: center;
+                font-weight: 600;
+                margin: 10px 0;
+            }
+            
+            .course-col:hover {
+                box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+                transform: scale(1.05);
+            }
+            
+            @media (max-width: 700px) {
+                .row {
+                    flex-direction: column;
+                    gap: 20px;
+                }
+            }
+            
+            /* ------- Campus -------- */
+            
+            .campus {
+                background: #003262;
+                width: 100%;
+                margin: auto;
+                text-align: center;
+                padding: 100px 120px 0 120px;
+            }
+            
+            .campus h1,.campus p {
+                color: #e5e5e5;
+            }
+            
+            .campus-col {
+                height: 450px;
+                flex-basis: 31%;
+                border-radius: 10px;
+                margin-bottom: 30px;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .campus-col img {
+                display: block;
+            }
+            
+            .layer {
+                background: transparent;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: 500ms;
+            }
+            
+            .layer:hover {
+                background: rgba(0, 50, 98, 0.5);
+            }
+            
+            .layer h3 {
+                width: 100%;
+                font-weight: 500;
+                color: #fff;
+                font-size: 26px;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                position: absolute;
+                opacity: 0;
+                transition: 500ms;
+            }
+            
+            .layer:hover h3 {
+                bottom: 50%;
+                opacity: 1;
+            }
+            
+            /* -------- Facilities --------- */
+            
+            .facilities {
+                background: #003262;
+                width: 100%;
+                margin: auto;
+                text-align: center;
+                padding: 100px;
+                padding-bottom: 30px;
+            }
+            
+            .facilities h1, .facilities p {
+                color: #e5e5e5;
+            }
+            
+            .facilities p {
+                text-align: center;
+            }
+            
+            .facilities-col {
+                flex-basis: 33%;
+                border-radius: 10px;
+                margin-bottom: 5%;
+                text-align: left;
+                padding: 20px;
+            }
+            
+            .facilities-col img {
+                width: 100%;
+                height: 470px;
+                border-radius: 10px;
+                transition: 500ms;
+            }
+            
+            .facilities-col h3 {
+                color: #e5e5e5;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+            
+            .facilities-col p {
+                padding: 0;
+                text-align: left;
+            }
+            
+            /* .facilities-col:hover img {
+                margin-bottom: 15px;
+                box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+                transform: scale(1.05);
+            } */
+            
+            @media (max-width: 700px) {
+                .campus {
+                    padding: 50px;
+                }
+                .facilities {
+                    padding: 50px;
+                }
+                .facilities-col img {
+                    height: auto;
+                }
+            }
+            
+            /* --------- Testimonials ----------- */
+            
+            .testimonials {
+                width: 80%;
+                margin: auto;
+                text-align: center;
+                padding-top: 100px;
+            }
+            
+            .testimonials-col {
+                flex-basis: 48%;
+                border-radius: 10px;
+                margin-bottom: 5%;
+                text-align: left;
+                background: #fff3f3;
+                padding: 25px;
+                cursor: pointer;
+                display: flex;
+                transition: 500ms;
+            }
+            
+            /* .testimonials-col:hover {
+                box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+                transform: scale(1.05);
+            } */
+            
+            .testimonials-col img {
+                height: 60px;
+                margin-left: 5px;
+                margin-right: 30px;
+                border-radius: 50%;
+            }
+            
+            .testimonials-col p {
+                padding: 0;
+            }
+            
+            .testimonials-col h3 {
+                font-size: 16px;
+                margin-top: 15px;
+                text-align: left;
+            }
+            
+            .testimonials-col i {
+                font-size: 14px;
+                color: #003262;
+            }
+            
+            @media (max-width: 700px) {
+                .testimonials-col img {
+                    margin-left: 0px;
+                    margin-right: 15px;
+                }
+            }
+            
+            /* --------- Enroll Banner ---------- */
+            
+            .enroll-banner {
+                margin: 100px auto;
+                width: 80%;
+                background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../static/dist/img/banner.jpg");
+                background-position: center;
+                background-size: cover;
+                border-radius: 10px;
+                text-align: center;
+                padding: 100px 0;
+            }
+            
+            .enroll-banner h1 {
+                color: #e5e5e5;
+                margin-bottom: 10px;
+                padding: 0;
+            }
+            
+            @media (max-width: 700px) {
+                .enroll-banner h1 {
+                    font-size: 20px;
+                }
+            }
+            
+            /* -------- Footer --------- */
+            
+            footer {
+                width: 100%;
+                text-align: left;
+                margin-top: 100px;
+                padding: 5px 200px;
+                background-color: #003262;
+            }
+            
+            .foot-col {
+                flex-basis: 25%;
+                margin-bottom: 5%;
+                padding-left: 40px;
+                border-right: 1px solid rgba(229, 229, 229, 0.2);
+            }
+            
+            .foot-col:last-of-type {
+                border-right: none;
+            }
+            
+            .foot-col h3 {
+                text-align: left;
+                margin-bottom: 20px;
+                padding-bottom: 5px;
+                border-bottom: 4px solid rgba(229, 229, 229, 0.3);
+                color: #e5e5e5;
+            }
+            
+            .foot-col:nth-of-type(1) h3 {
+                width: 45%;
+            }
+            
+            .foot-col:nth-of-type(2) h3 {
+                width: 30%;
+            }
+            
+            .foot-col:nth-of-type(3) h3 {
+                width: 51%;
+            }
+            
+            .foot-col p {
+                font-size: 14px;
+                color: #e5e5e5;
+            }
+            
+            .foot-col ul li {
+                list-style: none;
+                margin-bottom: 5%;
+            }
+            
+            .foot-col ul li a {
+                font-size: 14px;
+                text-decoration: none;
+                color: #e5e5e5;
+            }
+            
+            .foot-col ul li a:hover {
+                text-decoration: underline;
+            }
+            
+            @media (max-width: 700px) {
+                footer {
+                    padding: 10px;
+                }
+            
+                .foot-col {
+                    border-right: none;
+                }
+            }
+            
+            
+            
+            
+            /* ------------------------ About Us Page ------------------------ */
+            
+            .sub-header>h1 {
+                margin-top: 100px;
+            }
+            
+            .sub-header {
+                height: 50vh;
+                width: 100%;
+                background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.8)), url("../static/dist/img/background.jpg");
+                background-position: center;
+                background-size: cover;
+                text-align: center;
+                color: #e5e5e5;
+            }
+            
+            .about-us {
+                width: 80%;
+                margin: auto;
+                margin-top: 0;
+                padding-top: 80px;
+                padding-bottom: 50px;
+            }
+            
+            .about-col {
+                padding: 30px 2px;
+            }
+            
+            .about-col:first-of-type {
+                flex-basis: 61%;
+            }
+            
+            .about-col:last-of-type {
+                flex-basis: 34%;
+            }
+            
+            .about-col img {
+                width: 100%;
+                height: 370px;
+                border-radius: 10px;
+            }
+            
+            .about-col h1 {
+                padding-top: 0;
+            }
+            
+            .about-col p {
+                padding: 15px 0 25px;
+            }
+            
+            .mission a {
+                text-decoration: none;
+                margin-left: 10px;
+            }
+            
+            .mission a:hover {
+                text-decoration: underline;
+            }
+            
+            .mission ul li {
+                list-style: none;
+            }
+            
+            
+            /* -------------------- Contact Us Page ----------------------- */
+            
+            .location {
+                width: 80%;
+                margin: auto;
+                padding: 80px 0;
+            }
+            
+            .location iframe {
+                border-radius: 5px;
+                width: 100%;
+            }
+            
+            .contact-us {
+                width: 80%;
+                margin: auto;
+            }
+            
+            .contact-col {
+                flex-basis: 48%;
+                margin-bottom: 30px;
+            }
+            
+            .contact-col div {
+                display: flex;
+                align-items: center;
+                margin-bottom: 40px;
+            }
+            
+            .contact-col div .fa {
+                font-size: 28px;
+                color: #003262;
+                margin: 10px;
+                margin-right: 30px;
+            }
+            
+            .contact-col div p {
+                padding: 0;
+            }
+            
+            .contact-col div h5 {
+                font-size: 20px;
+                margin-bottom: 5px;
+                color: #555;
+                font-weight: 400;
+            }
+            
+            .contact-col input, .contact-col textarea {
+                width: 100%;
+                padding: 15px;
+                margin-bottom: 17px;
+                outline: none;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            
+            .blue-btn {
+                background-color: #003262;
+                border: 1px solid #003262;
+                color: #fff;
+            }
+            
+            .blue-btn:hover {
+                transform: none;
+            }
+            
+</style>
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+    <section class="sub-header">
+        <nav>
+
+            <a href="/index"><img src="../static/dist/img/logo1.png"></a>
+            <h1>LOK JAGRUTI UNIVERSITY</h1>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="/index">HOME</a></li>
+                    <li><a href="/courses">COURSES</a></li>
+                    <li><a href="/about">ABOUT</a></li>
+                    <!-- <li><a href="contact.html">CONTACT</a></li> -->
+                   <li> <a href="/contact" >Contact Us</a> </li>
+                   <li> <a href="/login" >Login</a> </li>
+                   <li>  <a href="/registration">Register</a> </li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+
+        </nav>
+
+        <h1>Courses Offered</h1>
+
+    </section>
+
+
+    <!-- Courses content -->
+
+    <section class="course">
+
+        <div class="row">
+            <div class="course-col">
+                <h3>Undergraduate Programmes</h3>
+                <p>NSUT offers following branches B.Tech Programmes at the Undergraduate Level:</p>
+                <p>
+                    1. B.Tech In Electronics And Communication Engineering <br>
+                    2. B.Tech In Computer Engineering <br>
+                    3. B.Tech In Computer Science And Engineering (With Specialisation In Artificial Lntelligence) <br>
+                    4. B.Tech In Mathematics And Computing <br>
+                    5. B.Tech In Electrical Engineering <br>
+                    6. B.Tech In Instrumentation And Control Engineering <br>
+                    7. B.Tech In Manufacturing Process And Automation Engineering <br>
+                    8. B.Tech In Mechanical Engineering <br>
+                    9. B.Tech In Information Technology <br>
+                    10. B.Tech In Bio-Technology <br>
+                </p>
+            </div>
+
+            <div class="course-col">
+                <h3>Postgraduate Programmes</h3>
+                <p>At the Post-Graduate(M.Tech.) level NSUT has the following programs:</p>
+                <p>
+                    1. M.Tech. In Computer Science <br>
+                    2. M.Tech. In Signal Processing <br>
+                    3. M.Tech. In Embedded System & VLSI <br>
+                    4. M.Tech. In Process Control M.Tech. In Communication And Networking <br>
+                    5. M.Tech. In Industrial Electronics <br>
+                    6. M.Tech. In Mechatronics <br>
+                    7. M.Tech. In Production Engineering <br>
+                    8. M.Tech. In Engineering Management <br>
+                    9. M.Tech. In CAD CAM M. Tech In Manufacturing Process & Automation <br>
+                    10. M.Tech. In Biochemical Engineering <br>
+                    11. M.Tech. In Bioinformatics M.Tech. In Nano Technology <br>
+                </p>
+            </div>
+
+            <div class="course-col">
+                <h3>Doctorate Programmes</h3>
+                <p>The University offers Doctorate of Philosophy (Ph.D.) degree programmes in following fields:</p>
+                <p>
+                    1. Electronics And Communication Engineering <br>
+                    2. Computer Engineering Instrumentation And Control Engineering <br>
+                    3. Manufacturing Process And Automation Engineering <br>
+                    4. Information Technology <br>
+                    5. Bio-Technology Management Studies <br>
+                    6. Humanities And Social Sciences <br>
+                    7. Mathematics <br>
+                    8. physics <br>
+                    9. Chemistry <br>
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="row">
+            <div class="foot-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">ContactUs</a></li>
+                    <li><a href="/login">LOgin</a></li>
+                    <li><a href="/registration">Register</a></li>
+                </ul>
+            </div>
+
+
+            <div class="foot-col">
+                <h3>Social Media</h3>
+                <ul>
+                    <li><a href="https://www.instagram.com/ljiet.official_ljk/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="https://www.instagram.com/ljiet.official_ljk/"><i class="fa-brands fa-youtube"></i> Youtube</a></li>
+                    <li><a href="https://www.instagram.com/ljiet.official_ljk/"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://www.instagram.com/ljiet.official_ljk/"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+                </ul>
+            </div>
+
+            <div class="foot-col">
+                <p>Lok Jagruti Kendra University(LJKU)</p>
+                <p>Formerly LJ Institute (LJ) <br>located:Ahemdabad,Gujrat<br></p>
+            </div>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- JS for Toggle menu -->
+
+    <script>
+
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+
+    </script>
+
+</body>
+
+</html>
